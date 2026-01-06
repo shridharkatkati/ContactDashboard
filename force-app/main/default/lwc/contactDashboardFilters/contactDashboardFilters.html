@@ -1,0 +1,44 @@
+<template>
+  <div class="slds-grid slds-m-left_xx-large">
+    <div class="slds-col slds-p-horizontal_xx-large">
+      <!-- add input search box -->
+      <lightning-input
+        placeholder="Search contacts"
+        type="search"
+        onkeyup={filterContacts}
+      ></lightning-input>
+    </div>
+    <div class="slds-col slds-p-horizontal_xx-large">
+      <!-- Add Account Dropdown -->
+      <lightning-combobox
+        label="Account"
+        placeholder="select account"
+        options={accountOptions}
+        onchange={handleAccountChange}
+        value={selectedAccount}
+      ></lightning-combobox>
+    </div>
+    <template lwc:if={getTerritoryOptions}>
+      <div class="slds-col slds-p-horizontal_xx-large">
+        <!-- Add territory dropdown -->
+        <lightning-combobox
+          label="Territory"
+          placeholder="Select territory"
+          options={terrOptions}
+          onchange={handleTerritoryChange}
+          value={selectedTerritory}
+        ></lightning-combobox>
+      </div>
+    </template>
+    <div class="slds-col slds-p-horizontal_xx-large newContact">
+      <!-- add new contact button -->
+      <lightning-button
+        variant="brand"
+        title="New Contact"
+        label="New Contact"
+        icon-name="utility:adduser"
+        onclick={handleNewContact}
+      ></lightning-button>
+    </div>
+  </div>
+</template>

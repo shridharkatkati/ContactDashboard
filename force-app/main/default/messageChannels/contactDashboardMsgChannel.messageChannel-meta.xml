@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is Lightning Message Channel for sending data to other individual components in the dashboard component.</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>This is the territory that changed or created on the record valid values: North, South, East, West</description>
+        <fieldName>territory</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>This is the contact index that is selected for editing</description>
+        <fieldName>operation</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>This is the contact Id that is selected for editing</description>
+        <fieldName>contactId</fieldName>
+    </lightningMessageFields>
+    <masterLabel>ContactDashboardMessageChannel</masterLabel>
+</LightningMessageChannel>

@@ -1,0 +1,110 @@
+<template>
+  <section
+    role="dialog"
+    tabindex="-1"
+    aria-modal="true"
+    aria-labelledby="modal-heading-01"
+    class="slds-modal slds-fade-in-open"
+  >
+    <div class="slds-modal__container">
+      <button
+        class="slds-button slds-button_icon slds-modal__close"
+        onclick={handleCloseModal}
+      >
+        <div class="slds-p-around_x-small">
+          <lightning-icon
+            icon-name="utility:close"
+            size="medium"
+          ></lightning-icon>
+        </div>
+        <span class="slds-assistive-text">Cancel and close</span>
+      </button>
+      <div class="slds-modal__header">
+        <h1
+          id="modal-heading-01"
+          class="slds-modal__title slds-hyphenate"
+          tabindex="-1"
+        >
+          <template lwc:if={isEdit}> Edit Contact </template>
+          <template lwc:else> Create Contact </template>
+        </h1>
+      </div>
+      <div
+        class="slds-modal__content slds-p-around_medium"
+        id="modal-content-id-1"
+      >
+        <!-- form input fields -->
+        <lightning-input
+          type="text"
+          label="First Name"
+          name="fName"
+          placeholder="Contact's Name"
+          value={fName}
+          onchange={handleContactInputs}
+        ></lightning-input>
+        <lightning-input
+          type="text"
+          label="Last Name"
+          name="lName"
+          value={lName}
+          placeholder="Contact's Name"
+          onchange={handleContactInputs}
+        ></lightning-input>
+        <lightning-input
+          type="email"
+          label="Email"
+          name="contactEmail"
+          value={contactEmail}
+          placeholder="Contact's email"
+          onchange={handleContactInputs}
+        ></lightning-input>
+        <template lwc:if={territoriesFound}></template>
+        <lightning-radio-group
+          name="territory"
+          label="Territory"
+          options={allTerritories}
+          value={territory}
+          required
+          type="radio"
+          onchange={handleContactInputs}
+        ></lightning-radio-group>
+        <lightning-input
+          type="tel"
+          label="Phone"
+          name="contactPhone"
+          value={contactPhone}
+          placeholder="+91 1234567890"
+          pattern="\+[0-9]{1,2} [0-9]{10}"
+          message-when-pattern-mismatch="Use format: +[Country Code] [10 Digits] (e.g. +1 1234567890 or +91 1234567890)"
+          onchange={handleContactInputs}
+        ></lightning-input>
+      </div>
+      <div class="slds-modal__footer">
+        <button
+          class="slds-button slds-button_neutral"
+          aria-label="Cancel and close"
+          onclick={handleCloseModal}
+        >
+          Cancel
+        </button>
+        <template lwc:if={_contactInfo}>
+          <button
+            class="slds-button slds-button_brand"
+            onclick={handleCreateContact}
+          >
+            Save
+          </button>
+        </template>
+        <template lwc:else>
+          <button
+            class="slds-button slds-button_brand"
+            onclick={handleUpdateContact}
+          >
+            Save
+          </button>
+        </template>
+      </div>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>

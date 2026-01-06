@@ -1,0 +1,113 @@
+<template>
+  <div>
+    <div
+      class="slds-p-around_medium slds-m-around_medium dashboardHeader beige"
+    >
+      <!-- contact filters section -->
+      <template lwc:if={getTerritoryOptions}>
+        <c-contact-dashboard-filters
+          onfilterchange={handleFilterChange}
+          onnewcontact={handleNewContactModal}
+          terr-options={filterTerritoryOptions}
+        ></c-contact-dashboard-filters>
+        <template lwc:if={showModal}>
+          <div>
+            <!-- open create contact modal -->
+            <c-create-contact-modal
+              contact-info={contactInfo}
+              onclosemodal={handleCloseModal}
+              all-territories={territoriesVals}
+            ></c-create-contact-modal>
+          </div>
+        </template>
+      </template>
+      <template lwc:else>
+        <div class="exampleHolder">
+          <lightning-spinner
+            alternative-text="Loading"
+            size="xx-small"
+          ></lightning-spinner>
+        </div>
+      </template>
+    </div>
+    <div class="slds-p-around_medium slds-m-around_medium statsContainer beige">
+      <!-- contact territory stats section -->
+      <c-contact-territory-stats
+        count-north={northCount}
+        count-south={southCount}
+        count-east={eastCount}
+        count-west={westCount}
+      ></c-contact-territory-stats>
+    </div>
+    <div class="slds-p-around_medium slds-m-around_medium contactListContainer">
+      <!-- contact list section -->
+      <template lwc:if={getContactsList}>
+        <!-- template for each  -->
+        <div class="beige slds-m-right_medium slds-grid slds-wrap slds-gutters">
+          <template
+            for:each={contactsList}
+            for:item="contact"
+            for:index="index"
+          >
+            <div
+              key={contact.Id}
+              class="contactDisplayCard slds-m-around_small"
+            >
+              <!-- list of cards -->
+              <div class="slds-col">
+                <div class="slds-grid slds-gutters slds-p-around_x-small">
+                  <!-- one card -->
+                  <div class="icondiv slds-col">
+                    <!-- Contact icon -->
+                    <lightning-icon
+                      icon-name="utility:user"
+                      alternative-text="user"
+                      size="large"
+                      title="user"
+                    ></lightning-icon>
+                  </div>
+                  <div class="midDiv slds-col slds-m-around_xx-small">
+                    <!-- contact detail -->
+                    <div>{contact.Name}</div>
+                    <div>{contact.Email}</div>
+                    <div>{contact.Phone}</div>
+                  </div>
+                  <div class="sidediv slds-col">
+                    <lightning-layout horizontal-align="space">
+                      <lightning-layout-item>
+                        Territory: {contact.Territory}
+                      </lightning-layout-item>
+                      <lightning-layout-item>
+                        <div>
+                          <lightning-button-menu
+                            alternative-text="Show menu"
+                            variant="border"
+                            onselect={handleContactMenuSelect}
+                            data-index={index}
+                          >
+                            <lightning-menu-item
+                              value="viewContact"
+                              label="View  Contact"
+                            ></lightning-menu-item>
+                            <lightning-menu-item
+                              value="editContact"
+                              label="Edit Contact"
+                            ></lightning-menu-item>
+                            <lightning-menu-item
+                              value="deleteContact"
+                              label="Delete Contact"
+                            ></lightning-menu-item>
+                          </lightning-button-menu>
+                        </div>
+                      </lightning-layout-item>
+                    </lightning-layout>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </template>
+    </div>
+  </div>
+</template>

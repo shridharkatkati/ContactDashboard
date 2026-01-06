@@ -1,0 +1,81 @@
+<template>
+  <div class="header">
+    <h1>Territory Stats</h1>
+  </div>
+  <div class="statsContainer slds-m-around_medium">
+    <lightning-layout horizontal-align="space">
+      <!-- North Card -->
+      <lightning-layout-item>
+        <div class="card slds-p-around_medium">
+          <div>
+            <lightning-icon
+              icon-name="utility:checkin"
+              alternative-text="checkin"
+              size="small"
+              title="checkin"
+            ></lightning-icon>
+          </div>
+          <strong>North</strong>
+          <template lwc:if={countNorth}>
+            <div>{countNorth}</div>
+          </template>
+          <div>Contacts</div>
+        </div>
+      </lightning-layout-item>
+      <!-- South Card -->
+      <lightning-layout-item>
+        <div class="card slds-p-around_medium">
+          <div>
+            <lightning-icon
+              icon-name="utility:checkin"
+              alternative-text="checkin"
+              size="small"
+              title="checkin"
+            ></lightning-icon>
+          </div>
+          <strong>South</strong>
+          <template lwc:if={countSouth}>
+            <div>{countSouth}</div>
+          </template>
+          <div>Contacts</div>
+        </div>
+      </lightning-layout-item>
+      <!-- East Card -->
+      <lightning-layout-item>
+        <div class="card slds-p-around_medium">
+          <div>
+            <lightning-icon
+              icon-name="utility:checkin"
+              alternative-text="checkin"
+              size="small"
+              title="checkin"
+            ></lightning-icon>
+          </div>
+          <strong>East</strong>
+          <template lwc:if={countEast}>
+            <div>{countEast}</div>
+          </template>
+          <div>Contacts</div>
+        </div>
+      </lightning-layout-item>
+      <!-- West Card -->
+      <lightning-layout-item>
+        <div class="card slds-p-around_medium">
+          <div>
+            <lightning-icon
+              icon-name="utility:checkin"
+              alternative-text="checkin"
+              size="small"
+              title="checkin"
+            ></lightning-icon>
+          </div>
+          <strong>West</strong>
+          <template lwc:if={countWest}>
+            <div>{countWest}</div>
+          </template>
+          <div>Contacts</div>
+        </div>
+      </lightning-layout-item>
+    </lightning-layout>
+  </div>
+</template>

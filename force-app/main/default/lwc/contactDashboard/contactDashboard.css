@@ -1,0 +1,35 @@
+.beige {
+  background-color: beige;
+}
+.dashboardHeader {
+  height: 1.2 rem;
+  width: 100%;
+}
+
+.statsContainer {
+  height: 2.2 rem;
+}
+
+.contactListContainer {
+  width: 100%;
+}
+.contactDisplayCard {
+  background-color: #cbb9a4;
+  height: 3 rem;
+  width: 406px;
+}
+.icondiv {
+  width: 50px;
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center;
+}
+.sidediv {
+  width: 125px;
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center;
+}
+.midDiv {
+  width: 225px;
+}

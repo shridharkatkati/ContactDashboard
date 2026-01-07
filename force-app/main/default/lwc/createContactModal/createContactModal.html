@@ -87,10 +87,10 @@
         >
           Cancel
         </button>
-        <template lwc:if={_contactInfo}>
+        <template lwc:if={isEdit}>
           <button
             class="slds-button slds-button_brand"
-            onclick={handleCreateContact}
+            onclick={handleUpdateContact}
           >
             Save
           </button>
@@ -98,7 +98,7 @@
         <template lwc:else>
           <button
             class="slds-button slds-button_brand"
-            onclick={handleUpdateContact}
+            onclick={handleCreateContact}
           >
             Save
           </button>
